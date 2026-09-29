@@ -1,0 +1,1347 @@
+[
+  {
+    "symbol": "RELIANCE",
+    "name": "Reliance Industries Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "TCS",
+    "name": "Tata Consultancy Services Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "INFY",
+    "name": "Infosys Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "INFOSYS"
+    ]
+  },
+  {
+    "symbol": "HDFCBANK",
+    "name": "HDFC Bank Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "HDFC BANK"
+    ]
+  },
+  {
+    "symbol": "ICICIBANK",
+    "name": "ICICI Bank Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "ICICI BANK"
+    ]
+  },
+  {
+    "symbol": "SBIN",
+    "name": "State Bank of India",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "SBI",
+      "STATE BANK OF INDIA"
+    ]
+  },
+  {
+    "symbol": "HINDUNILVR",
+    "name": "Hindustan Unilever Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "HUL",
+      "HINDUSTAN UNILEVER"
+    ]
+  },
+  {
+    "symbol": "ITC",
+    "name": "ITC Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "LT",
+    "name": "Larsen & Toubro Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "L&T",
+      "LARSEN AND TOUBRO",
+      "LARSEN & TOUBRO"
+    ]
+  },
+  {
+    "symbol": "AXISBANK",
+    "name": "Axis Bank Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "AXIS BANK"
+    ]
+  },
+  {
+    "symbol": "KOTAKBANK",
+    "name": "Kotak Mahindra Bank Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "KOTAK BANK",
+      "KOTAK MAHINDRA BANK"
+    ]
+  },
+  {
+    "symbol": "BAJFINANCE",
+    "name": "Bajaj Finance Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "BAJAJ FINANCE"
+    ]
+  },
+  {
+    "symbol": "BAJAJFINSV",
+    "name": "Bajaj Finserv Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "BAJAJ FINSERV"
+    ]
+  },
+  {
+    "symbol": "BHARTIARTL",
+    "name": "Bharti Airtel Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "AIRTEL",
+      "BHARTI AIRTEL"
+    ]
+  },
+  {
+    "symbol": "ASIANPAINT",
+    "name": "Asian Paints Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "ASIAN PAINTS"
+    ]
+  },
+  {
+    "symbol": "MARUTI",
+    "name": "Maruti Suzuki India Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "MARUTI SUZUKI"
+    ]
+  },
+  {
+    "symbol": "SUNPHARMA",
+    "name": "Sun Pharmaceutical Industries Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "SUN PHARMA"
+    ]
+  },
+  {
+    "symbol": "TITAN",
+    "name": "Titan Company Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "ULTRACEMCO",
+    "name": "UltraTech Cement Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "ULTRATECH",
+      "ULTRATECH CEMENT"
+    ]
+  },
+  {
+    "symbol": "NESTLEIND",
+    "name": "Nestle India Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "NESTLE"
+    ]
+  },
+  {
+    "symbol": "WIPRO",
+    "name": "Wipro Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "HCLTECH",
+    "name": "HCL Technologies Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "HCL TECH",
+      "HCL TECHNOLOGIES"
+    ]
+  },
+  {
+    "symbol": "TECHM",
+    "name": "Tech Mahindra Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "TECH MAHINDRA"
+    ]
+  },
+  {
+    "symbol": "ADANIENT",
+    "name": "Adani Enterprises Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "ADANI ENTERPRISES"
+    ]
+  },
+  {
+    "symbol": "ADANIPORTS",
+    "name": "Adani Ports and Special Economic Zone Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "ADANI PORTS"
+    ]
+  },
+  {
+    "symbol": "POWERGRID",
+    "name": "Power Grid Corporation of India Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "POWER GRID"
+    ]
+  },
+  {
+    "symbol": "NTPC",
+    "name": "NTPC Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "ONGC",
+    "name": "Oil and Natural Gas Corporation Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "COALINDIA",
+    "name": "Coal India Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "COAL INDIA"
+    ]
+  },
+  {
+    "symbol": "TATASTEEL",
+    "name": "Tata Steel Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "TATA STEEL"
+    ]
+  },
+  {
+    "symbol": "JSWSTEEL",
+    "name": "JSW Steel Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "JSW STEEL"
+    ]
+  },
+  {
+    "symbol": "HINDALCO",
+    "name": "Hindalco Industries Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "TATAMOTORS",
+    "name": "Tata Motors Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "TATA MOTORS"
+    ]
+  },
+  {
+    "symbol": "M&M",
+    "name": "Mahindra & Mahindra Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "MAHINDRA AND MAHINDRA",
+      "MAHINDRA & MAHINDRA",
+      "MAHINDRA"
+    ]
+  },
+  {
+    "symbol": "EICHERMOT",
+    "name": "Eicher Motors Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "EICHER MOTORS"
+    ]
+  },
+  {
+    "symbol": "HEROMOTOCO",
+    "name": "Hero MotoCorp Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "HERO MOTOCORP"
+    ]
+  },
+  {
+    "symbol": "BAJAJ-AUTO",
+    "name": "Bajaj Auto Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "BAJAJ AUTO"
+    ]
+  },
+  {
+    "symbol": "DRREDDY",
+    "name": "Dr. Reddy's Laboratories Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "DR REDDY",
+      "DR REDDYS"
+    ]
+  },
+  {
+    "symbol": "CIPLA",
+    "name": "Cipla Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "DIVISLAB",
+    "name": "Divi's Laboratories Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "DIVIS LAB",
+      "DIVIS LABORATORIES"
+    ]
+  },
+  {
+    "symbol": "APOLLOHOSP",
+    "name": "Apollo Hospitals Enterprise Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "APOLLO HOSPITALS"
+    ]
+  },
+  {
+    "symbol": "GRASIM",
+    "name": "Grasim Industries Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "BRITANNIA",
+    "name": "Britannia Industries Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "BPCL",
+    "name": "Bharat Petroleum Corporation Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "BHARAT PETROLEUM"
+    ]
+  },
+  {
+    "symbol": "IOC",
+    "name": "Indian Oil Corporation Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "INDIAN OIL"
+    ]
+  },
+  {
+    "symbol": "INDUSINDBK",
+    "name": "IndusInd Bank Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "INDUSIND BANK"
+    ]
+  },
+  {
+    "symbol": "SBILIFE",
+    "name": "SBI Life Insurance Company Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "SBI LIFE"
+    ]
+  },
+  {
+    "symbol": "HDFCLIFE",
+    "name": "HDFC Life Insurance Company Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "HDFC LIFE"
+    ]
+  },
+  {
+    "symbol": "ICICIPRULI",
+    "name": "ICICI Prudential Life Insurance Company Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "ICICI PRUDENTIAL"
+    ]
+  },
+  {
+    "symbol": "ICICIGI",
+    "name": "ICICI Lombard General Insurance Company Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "ICICI LOMBARD"
+    ]
+  },
+  {
+    "symbol": "SHREECEM",
+    "name": "Shree Cement Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "SHREE CEMENT"
+    ]
+  },
+  {
+    "symbol": "UPL",
+    "name": "UPL Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "GAIL",
+    "name": "GAIL (India) Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "PIDILITIND",
+    "name": "Pidilite Industries Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "PIDILITE"
+    ]
+  },
+  {
+    "symbol": "DABUR",
+    "name": "Dabur India Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "GODREJCP",
+    "name": "Godrej Consumer Products Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "GODREJ CONSUMER"
+    ]
+  },
+  {
+    "symbol": "MARICO",
+    "name": "Marico Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "COLPAL",
+    "name": "Colgate-Palmolive (India) Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "COLGATE"
+    ]
+  },
+  {
+    "symbol": "HAVELLS",
+    "name": "Havells India Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "SIEMENS",
+    "name": "Siemens Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "ABB",
+    "name": "ABB India Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "BOSCHLTD",
+    "name": "Bosch Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "BOSCH"
+    ]
+  },
+  {
+    "symbol": "DLF",
+    "name": "DLF Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "GODREJPROP",
+    "name": "Godrej Properties Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "GODREJ PROPERTIES"
+    ]
+  },
+  {
+    "symbol": "OBEROIRLTY",
+    "name": "Oberoi Realty Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "OBEROI REALTY"
+    ]
+  },
+  {
+    "symbol": "INDIGO",
+    "name": "InterGlobe Aviation Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "INTERGLOBE AVIATION"
+    ]
+  },
+  {
+    "symbol": "IRCTC",
+    "name": "Indian Railway Catering and Tourism Corporation Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "DMART",
+    "name": "Avenue Supermarts Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "AVENUE SUPERMARTS"
+    ]
+  },
+  {
+    "symbol": "TATACONSUM",
+    "name": "Tata Consumer Products Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "TATA CONSUMER"
+    ]
+  },
+  {
+    "symbol": "BERGEPAINT",
+    "name": "Berger Paints India Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "BERGER PAINTS"
+    ]
+  },
+  {
+    "symbol": "PAGEIND",
+    "name": "Page Industries Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "PAGE INDUSTRIES"
+    ]
+  },
+  {
+    "symbol": "MUTHOOTFIN",
+    "name": "Muthoot Finance Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "MUTHOOT FINANCE"
+    ]
+  },
+  {
+    "symbol": "CHOLAFIN",
+    "name": "Cholamandalam Investment and Finance Company Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "CHOLAMANDALAM"
+    ]
+  },
+  {
+    "symbol": "BANDHANBNK",
+    "name": "Bandhan Bank Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "BANDHAN BANK"
+    ]
+  },
+  {
+    "symbol": "FEDERALBNK",
+    "name": "Federal Bank Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "FEDERAL BANK"
+    ]
+  },
+  {
+    "symbol": "IDFCFIRSTB",
+    "name": "IDFC First Bank Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "IDFC FIRST BANK"
+    ]
+  },
+  {
+    "symbol": "PNB",
+    "name": "Punjab National Bank",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "BANKBARODA",
+    "name": "Bank of Baroda",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "CANBK",
+    "name": "Canara Bank",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "AMBUJACEM",
+    "name": "Ambuja Cements Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "AMBUJA CEMENT"
+    ]
+  },
+  {
+    "symbol": "ACC",
+    "name": "ACC Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "RAMCOCEM",
+    "name": "The Ramco Cements Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "RAMCO CEMENT"
+    ]
+  },
+  {
+    "symbol": "SRF",
+    "name": "SRF Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "PIIND",
+    "name": "PI Industries Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "PI INDUSTRIES"
+    ]
+  },
+  {
+    "symbol": "AARTIIND",
+    "name": "Aarti Industries Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "AARTI INDUSTRIES"
+    ]
+  },
+  {
+    "symbol": "VEDL",
+    "name": "Vedanta Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "VEDANTA"
+    ]
+  },
+  {
+    "symbol": "NMDC",
+    "name": "NMDC Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "SAIL",
+    "name": "Steel Authority of India Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "STEEL AUTHORITY"
+    ]
+  },
+  {
+    "symbol": "NATIONALUM",
+    "name": "National Aluminium Company Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "NATIONAL ALUMINIUM",
+      "NALCO"
+    ]
+  },
+  {
+    "symbol": "JINDALSTEL",
+    "name": "Jindal Steel & Power Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "JINDAL STEEL"
+    ]
+  },
+  {
+    "symbol": "MOTHERSON",
+    "name": "Samvardhana Motherson International Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "MOTHERSON SUMI"
+    ]
+  },
+  {
+    "symbol": "BALKRISIND",
+    "name": "Balkrishna Industries Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "BALKRISHNA INDUSTRIES"
+    ]
+  },
+  {
+    "symbol": "MRF",
+    "name": "MRF Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "APOLLOTYRE",
+    "name": "Apollo Tyres Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "APOLLO TYRES"
+    ]
+  },
+  {
+    "symbol": "ASHOKLEY",
+    "name": "Ashok Leyland Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "ASHOK LEYLAND"
+    ]
+  },
+  {
+    "symbol": "TVSMOTOR",
+    "name": "TVS Motor Company Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "TVS MOTOR"
+    ]
+  },
+  {
+    "symbol": "LUPIN",
+    "name": "Lupin Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "AUROPHARMA",
+    "name": "Aurobindo Pharma Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "AUROBINDO PHARMA"
+    ]
+  },
+  {
+    "symbol": "BIOCON",
+    "name": "Biocon Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "TORNTPHARM",
+    "name": "Torrent Pharmaceuticals Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "TORRENT PHARMA"
+    ]
+  },
+  {
+    "symbol": "ALKEM",
+    "name": "Alkem Laboratories Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "ALKEM LABORATORIES"
+    ]
+  },
+  {
+    "symbol": "GLENMARK",
+    "name": "Glenmark Pharmaceuticals Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "GLENMARK PHARMA"
+    ]
+  },
+  {
+    "symbol": "LTIM",
+    "name": "LTIMindtree Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "LTI MINDTREE",
+      "LTIMINDTREE"
+    ]
+  },
+  {
+    "symbol": "MPHASIS",
+    "name": "Mphasis Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "PERSISTENT",
+    "name": "Persistent Systems Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "PERSISTENT SYSTEMS"
+    ]
+  },
+  {
+    "symbol": "COFORGE",
+    "name": "Coforge Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "LTTS",
+    "name": "L&T Technology Services Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "LT TECHNOLOGY SERVICES"
+    ]
+  },
+  {
+    "symbol": "NAUKRI",
+    "name": "Info Edge (India) Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "INFO EDGE"
+    ]
+  },
+  {
+    "symbol": "TRENT",
+    "name": "Trent Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "VOLTAS",
+    "name": "Voltas Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "WHIRLPOOL",
+    "name": "Whirlpool of India Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "EXIDEIND",
+    "name": "Exide Industries Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "EXIDE INDUSTRIES"
+    ]
+  },
+  {
+    "symbol": "PETRONET",
+    "name": "Petronet LNG Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "PETRONET LNG"
+    ]
+  },
+  {
+    "symbol": "CONCOR",
+    "name": "Container Corporation of India Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "CONTAINER CORPORATION"
+    ]
+  },
+  {
+    "symbol": "ADANIPOWER",
+    "name": "Adani Power Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "ADANI POWER"
+    ]
+  },
+  {
+    "symbol": "ADANIGREEN",
+    "name": "Adani Green Energy Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "ADANI GREEN"
+    ]
+  },
+  {
+    "symbol": "TATAPOWER",
+    "name": "Tata Power Company Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "TATA POWER"
+    ]
+  },
+  {
+    "symbol": "TATACOMM",
+    "name": "Tata Communications Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "TATA COMMUNICATIONS"
+    ]
+  },
+  {
+    "symbol": "IDEA",
+    "name": "Vodafone Idea Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "VODAFONE IDEA"
+    ]
+  },
+  {
+    "symbol": "YESBANK",
+    "name": "Yes Bank Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "YES BANK"
+    ]
+  },
+  {
+    "symbol": "RBLBANK",
+    "name": "RBL Bank Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "RBL BANK"
+    ]
+  },
+  {
+    "symbol": "AUBANK",
+    "name": "AU Small Finance Bank Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "AU SMALL FINANCE BANK"
+    ]
+  },
+  {
+    "symbol": "LICHSGFIN",
+    "name": "LIC Housing Finance Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "LIC HOUSING FINANCE"
+    ]
+  },
+  {
+    "symbol": "PFC",
+    "name": "Power Finance Corporation Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "POWER FINANCE CORPORATION"
+    ]
+  },
+  {
+    "symbol": "RECLTD",
+    "name": "REC Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "IRFC",
+    "name": "Indian Railway Finance Corporation Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "HAL",
+    "name": "Hindustan Aeronautics Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "HINDUSTAN AERONAUTICS"
+    ]
+  },
+  {
+    "symbol": "BEL",
+    "name": "Bharat Electronics Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "BHARAT ELECTRONICS"
+    ]
+  },
+  {
+    "symbol": "BHEL",
+    "name": "Bharat Heavy Electricals Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "BHARAT HEAVY ELECTRICALS"
+    ]
+  },
+  {
+    "symbol": "GICRE",
+    "name": "General Insurance Corporation of India",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "GENERAL INSURANCE CORPORATION"
+    ]
+  },
+  {
+    "symbol": "NHPC",
+    "name": "NHPC Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "SJVN",
+    "name": "SJVN Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "IGL",
+    "name": "Indraprastha Gas Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "INDRAPRASTHA GAS"
+    ]
+  },
+  {
+    "symbol": "MGL",
+    "name": "Mahanagar Gas Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "MAHANAGAR GAS"
+    ]
+  },
+  {
+    "symbol": "UBL",
+    "name": "United Breweries Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "UNITED BREWERIES"
+    ]
+  },
+  {
+    "symbol": "MCDOWELL-N",
+    "name": "United Spirits Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "UNITED SPIRITS",
+      "MCDOWELL"
+    ]
+  },
+  {
+    "symbol": "JUBLFOOD",
+    "name": "Jubilant FoodWorks Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "JUBILANT FOODWORKS"
+    ]
+  },
+  {
+    "symbol": "RADICO",
+    "name": "Radico Khaitan Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "RADICO KHAITAN"
+    ]
+  },
+  {
+    "symbol": "CROMPTON",
+    "name": "Crompton Greaves Consumer Electricals Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "CROMPTON GREAVES"
+    ]
+  },
+  {
+    "symbol": "POLYCAB",
+    "name": "Polycab India Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "DIXON",
+    "name": "Dixon Technologies (India) Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "DIXON TECHNOLOGIES"
+    ]
+  },
+  {
+    "symbol": "KPITTECH",
+    "name": "KPIT Technologies Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "KPIT TECHNOLOGIES"
+    ]
+  },
+  {
+    "symbol": "CYIENT",
+    "name": "Cyient Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock"
+  },
+  {
+    "symbol": "ZEEL",
+    "name": "Zee Entertainment Enterprises Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "ZEE ENTERTAINMENT"
+    ]
+  },
+  {
+    "symbol": "SUNTV",
+    "name": "Sun TV Network Ltd.",
+    "exchange": "NSE",
+    "country": "India",
+    "instrument_type": "Common Stock",
+    "aliases": [
+      "SUN TV"
+    ]
+  }
+]

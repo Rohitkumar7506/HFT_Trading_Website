@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Educational Indian equities market monitoring dashboard">
+  <title>HFT Arbitrage Lab</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">H</div>
+      <div>
+        <b>HFT ARBITRAGE LAB</b>
+        <small>Indian Equities Market Monitor</small>
+      </div>
+    </div>
+    <div class="headerRight">
+      <div id="marketBadge" class="marketBadge closed"><span class="statusDot"></span><span>MARKET CLOSED</span></div>
+      <div id="modeBadge" class="pill">● <span>DEMO / SIMULATION MODE</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <label>EDUCATIONAL MARKET-DATA PROJECT</label>
+        <h1>Arbitrage Opportunity<br><span>Monitoring Dashboard</span></h1>
+        <p>Search Indian equities, inspect the latest available NSE and BSE quotes, and study cross-exchange spreads without placing trades.</p>
+      </div>
+      <div class="heroStat">
+        <small>Refresh mode</small>
+        <strong id="refreshRate">Manual</strong>
+        <small id="marketSession">NSE/BSE · 09:15–15:30 IST</small>
+      </div>
+    </section>
+
+    <div id="notice" class="notice hidden" role="status"></div>
+
+    <div class="toolbar">
+      <div class="searchWrap">
+        <input id="stockSearch" autocomplete="off" placeholder="Search symbol or company name…" aria-label="Search stocks">
+        <div id="searchResults" class="searchResults hidden"></div>
+      </div>
+      <button id="addSelected" class="primaryButton" disabled>＋ Add selected</button>
+      <button id="refreshButton" class="darkButton" title="Manual Refresh Only — data updates only when you click this">🔄 Manual Refresh</button>
+    </div>
+
+    <section class="cards">
+      <div><small>Watchlist Stocks</small><strong id="count">—</strong><em>Tracked in this session</em></div>
+      <div><small>Market Opportunities</small><strong id="signals">—</strong><em>Spread clears threshold + cost</em></div>
+      <div><small>Best Current Spread</small><strong id="spread">—</strong><em id="thresholdLabel">Educational comparison</em></div>
+      <div><small>Last Data Update</small><strong id="updated">—</strong><em>Server timestamp</em></div>
+    </section>
+
+    <section class="panel">
+      <div class="head">
+        <div>
+          <h2>Market Watchlist</h2>
+          <p>Real quotes when configured · click a row to inspect history and comparison · Manual Refresh Only</p>
+        </div>
+        <span id="source">—</span>
+      </div>
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Asset</th><th>Source</th><th>Latest price</th><th>Change</th><th>NSE</th><th>BSE</th>
+              <th>Spread</th><th>Spread %</th><th>Status</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <p class="note">* Educational Arbitrage Calculation: gross price difference only. It is not a guaranteed profit estimate and excludes liquidity, taxes, slippage and execution risk.</p>
+    </section>
+
+    <section class="two">
+      <div class="panel">
+        <h2>Educational Arbitrage Calculation</h2>
+        <div class="formula">Spread = |NSE price − BSE price|</div>
+        <p>When both exchange quotes are available, the dashboard shows the gross difference and a directional comparison. It does not execute trades or claim guaranteed profit.</p>
+        <div class="miniStats">
+          <div><small>Signal threshold</small><b>₹<span id="thresholdVal">0.75</span></b></div>
+          <div><small>Estimated cost / share</small><b>₹<span id="txCost">0.30</span></b></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Data and safeguards</h2>
+        <div class="tags"><span>Python</span><span>Flask</span><span>Chart.js</span><span>Twelve Data</span><span>Server-side key</span><span>Manual Refresh Only</span></div>
+        <p id="dataDescription">The backend keeps API credentials out of browser code. If no key is configured, the app stays in a clearly-labelled demo mode and never mixes simulated values with real responses.</p>
+      </div>
+    </section>
+
+    <footer>Educational project · No trades are executed · Market data may be delayed or unavailable · Manual Refresh Only</footer>
+  </main>
+
+  <div id="modalOverlay" class="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal">
+      <button id="modalClose" class="modalClose" aria-label="Close details">✕</button>
+      <div id="modalBody"><div class="loading">Loading stock details…</div></div>
+      <div class="chartToolbar">
+        <b>Price history <span id="historySourceBadge"></span></b>
+        <div id="rangeButtons">
+          <button data-range="1D">1D</button><button data-range="1W">1W</button>
+          <button data-range="1M" class="active">1M</button><button data-range="3M">3M</button><button data-range="1Y">1Y</button>
+        </div>
+      </div>
+      <div class="chartBox"><canvas id="assetChart"></canvas></div>
+      <p id="chartNote" class="note"></p>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

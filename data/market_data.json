@@ -1,0 +1,15 @@
+{
+  "threshold": 0.75,
+  "transaction_cost": 0.30,
+  "default_watchlist": ["RELIANCE:NSE", "TCS:NSE", "INFY:NSE", "HDFCBANK:NSE", "ICICIBANK:NSE"],
+  "assets": [
+    { "symbol": "RELIANCE:NSE", "name": "Reliance Industries", "exchange": "NSE", "base_price": 1450.00 },
+    { "symbol": "TCS:NSE", "name": "Tata Consultancy Services", "exchange": "NSE", "base_price": 3450.00 },
+    { "symbol": "INFY:NSE", "name": "Infosys", "exchange": "NSE", "base_price": 1550.00 },
+    { "symbol": "HDFCBANK:NSE", "name": "HDFC Bank", "exchange": "NSE", "base_price": 1980.00 },
+    { "symbol": "ICICIBANK:NSE", "name": "ICICI Bank", "exchange": "NSE", "base_price": 1420.00 },
+    { "symbol": "SBIN:NSE", "name": "State Bank of India", "exchange": "NSE", "base_price": 820.00 },
+    { "symbol": "ITC:NSE", "name": "ITC", "exchange": "NSE", "base_price": 430.00 },
+    { "symbol": "BHARTIARTL:NSE", "name": "Bharti Airtel", "exchange": "NSE", "base_price": 1850.00 }
+  ]
+}
