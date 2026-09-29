@@ -29,7 +29,7 @@ import os
 import random
 import re
 import time
-from datetime import datetime, time as dt_time
+from datetime import datetime, time as dt_time, timedelta
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -174,6 +174,18 @@ class TwelveDataClient:
         self.session.headers.update({"Accept": "application/json"})
 
     def get(self, endpoint: str, params: dict[str, Any]) -> dict[str, Any]:
+        """One Twelve Data GET. Verified against the live API on this key:
+
+        - Valid symbols return HTTP 200 JSON (quote / time_series / symbol_search).
+        - Per-minute quota exhaustion returns HTTP 429 with
+          {"code":429,"status":"error","message":"You have run out of API
+          credits..."}.
+        - Symbols outside the plan's coverage return HTTP 404 with
+          {"code":404,"status":"error","message":"This symbol is available
+          starting with the Grow or Venture plan..."} — a plan-coverage
+          failure, NOT a bad mapping. Both are raised as MarketDataError so
+          callers can fall back to local data instead of showing an error.
+        """
         query = {"apikey": self.api_key, **params}
         try:
             response = self.session.get(
@@ -202,7 +214,16 @@ class TwelveDataClient:
         if response.status_code >= 400 or (
             isinstance(payload, dict) and payload.get("status") == "error"
         ):
-            if error_text and "symbol" in str(error_text).lower():
+            # "This symbol is available starting with the Grow or Venture
+            # plan" also contains the word "symbol", but it is a plan/credit
+            # limitation, not an unknown ticker — report it honestly so the
+            # fallback chain (local history -> demo -> unavailable) kicks in.
+            message_text = str(error_text or "").lower()
+            if "plan" in message_text or "credit" in message_text or "upgrade" in message_text:
+                raise MarketDataError(
+                    "Twelve Data limit reached for this stock on the current plan.", 429
+                )
+            if error_text and "symbol" in message_text:
                 raise MarketDataError("No matching stock found.", 404)
             raise MarketDataError("Unable to refresh market data.", response.status_code or 502)
         return payload
@@ -210,15 +231,54 @@ class TwelveDataClient:
 
 CLIENT = TwelveDataClient(TWELVE_DATA_API_KEY) if TWELVE_DATA_API_KEY else None
 
+# --- Offline testing overrides (do not affect normal operation) -----------
+# Setting HFT_FORCE_OFFLINE=true makes the app behave exactly as if no API
+# key were configured, even when one exists in .env. Handy for verifying the
+# local/demo fallback chain without removing the key from the file.
+FORCE_OFFLINE = os.getenv("HFT_FORCE_OFFLINE", "false").strip().lower() == "true"
+
+
+def live_client() -> TwelveDataClient | None:
+    """The Twelve Data client to use for *live* requests, or None when the
+    app should run purely on local/demo data (no key set, or forced offline)."""
+    return None if FORCE_OFFLINE else CLIENT
+
+
+def _force_mode() -> str | None:
+    """Optional ?force=demo query parameter used by the frontend only while
+    the backend reports DEMO mode, so an operator can preview the seeded
+    demo dashboard for symbols that have no downloaded history yet."""
+    mode = request.args.get("force")
+    return mode.strip().lower() if mode else None
+
 # Demo state is only initialized/used when no API key exists.
+def _demo_trading_days(count: int) -> list[str]:
+    """The last `count` weekday dates (Mon-Fri), oldest first, as YYYY-MM-DD."""
+    days: list[str] = []
+    cursor = now_ist()
+    while len(days) < count:
+        if cursor.weekday() < 5:
+            days.append(cursor.strftime("%Y-%m-%d"))
+        cursor = datetime.combine(cursor.date(), dt_time(0, 0), INDIA_TZ)
+        cursor -= timedelta(days=1)
+    return list(reversed(days))
+
+
 DEMO_STATE: dict[str, dict[str, Any]] = {}
 for asset in ASSETS:
     base = float(asset["base_price"])
-    history = []
+    # Deterministic seeded demo walk over the last 260 weekdays ending at
+    # the seed base price, so all ranges (1D..1Y) have local demo history
+    # without any API access. Values are clearly labelled DEMO everywhere.
+    rng = random.Random(f"hft-demo-{asset['symbol']}")
+    closes: list[float] = []
     current = base
-    for _ in range(20):
-        current = round(current + random.uniform(-3, 3), 2)
-        history.append(current)
+    for _ in range(259):
+        current = round(max(base * 0.80, min(base * 1.20, current + rng.uniform(-3, 3))), 2)
+        closes.append(current)
+    closes.append(base)
+    days = _demo_trading_days(260)
+    history = [{"datetime": f"{day} 15:30:00", "price": close} for day, close in zip(days, closes)]
     DEMO_STATE[asset["symbol"]] = {"price": base, "history": history}
 
 # The server-side watchlist starts as the default 4-5 major stocks and is
@@ -227,7 +287,7 @@ WATCHLIST = list(DEFAULT_WATCHLIST)
 
 
 def mode_payload() -> dict[str, Any]:
-    real = CLIENT is not None
+    real = live_client() is not None
     return {
         "mode": "REAL" if real else "DEMO",
         "real_data": real,
@@ -246,17 +306,94 @@ def mode_payload() -> dict[str, Any]:
     }
 
 
+def demo_history(symbol: str, range_name: str = "1M") -> list[dict[str, Any]]:
+    """Slice the seeded daily demo history for one chart range.
+
+    Only used when no API key is configured and no downloaded history file
+    exists; every response built from it is tagged DEMO so it can never be
+    mistaken for live data.
+    """
+    return demo_history_for(symbol, range_name)
+
+
+def _seeded_state(symbol: str) -> dict[str, Any] | None:
+    """Find seeded demo state for a composite or bare symbol by base name."""
+    if symbol in DEMO_STATE:
+        return DEMO_STATE[symbol]
+    base = symbol.split(":")[0].upper()
+    for key, value in DEMO_STATE.items():
+        if key.split(":")[0].upper() == base:
+            return value
+    return None
+
+
+def forced_demo_quote(symbol: str) -> dict[str, Any] | None:
+    """Build a clearly-labelled DEMO quote for any stock that has seeded
+    history, reusing the same seed values (never new random numbers), so an
+    offline demo session can preview catalog stocks not in the small seed
+    list. Returns None when no seeded data exists at all."""
+    state = _seeded_state(symbol)
+    if not state:
+        return None
+    closes = [h["price"] for h in state["history"]]
+    price = float(closes[-1])
+    previous_close = float(closes[-2]) if len(closes) > 1 else price
+    change = round(price - previous_close, 2)
+    pct = round(change / previous_close * 100, 2) if previous_close else 0.0
+    base = symbol.split(":")[0].upper()
+    catalog_entry = STOCKS_BY_BASE.get(base, {})
+    exchange = symbol.split(":")[1].upper() if ":" in symbol else catalog_entry.get("exchange", "NSE")
+    day = str(state["history"][-1]["datetime"])[:10]
+    return {
+        "symbol": symbol,
+        "name": catalog_entry.get("name", base),
+        "exchange": exchange,
+        "country": catalog_entry.get("country", "India"),
+        "instrument_type": catalog_entry.get("instrument_type", "Common Stock"),
+        "price": price,
+        "change": change,
+        "percent_change": pct,
+        "open": price,
+        "high": max(closes[-5:]) if len(closes) >= 5 else price,
+        "low": min(closes[-5:]) if len(closes) >= 5 else price,
+        "previous_close": previous_close,
+        "volume": None,
+        "fifty_two_week_high": max(closes),
+        "fifty_two_week_low": min(closes),
+        "last_updated": f"{day} 15:30:00",
+        "market": market_status(),
+        "is_demo": True,
+        "data_source": "DEMO",
+        "fallback_reason": None,
+    }
+
+
+def demo_history_for(symbol: str, range_name: str = "1M") -> list[dict[str, Any]]:
+    """Range-slice the seeded demo history for a symbol, matching by base
+    name so both "INFY:NSE" and "INFY" resolve to the same seed."""
+    state = _seeded_state(symbol)
+    if not state:
+        raise MarketDataError("No matching stock found.", 404)
+    points = state["history"]
+    range_key = range_name.upper()
+    if range_key == "1D":
+        last = points[-1]
+        day = str(last["datetime"])[:10]
+        return [{"datetime": f"{day} {hh}:{mm}:00", "price": last["price"]}
+                for hh, mm in (("09", "15"), ("10", "30"), ("12", "00"), ("13", "30"), ("15", "00"), ("15", "30"))]
+    take = {"1W": 7, "1M": 22, "3M": 66, "1Y": 252}.get(range_key, 22)
+    return points[-take:]
+
+
 def demo_quote(symbol: str) -> dict[str, Any]:
     asset = next((item for item in ASSETS if item["symbol"] == symbol), None)
     if not asset:
         raise MarketDataError("No matching stock found.", 404)
     base = float(asset["base_price"])
-    state = DEMO_STATE.setdefault(symbol, {"price": base, "history": [base]})
+    state = DEMO_STATE.setdefault(symbol, {"price": base, "history": [{"datetime": now_ist().isoformat(), "price": base}]})
     last = float(state["price"])
     new_price = round(max(base * 0.95, min(base * 1.05, last + random.uniform(-2.5, 2.5))), 2)
     state["price"] = new_price
-    state["history"].append(new_price)
-    state["history"] = state["history"][-MAX_HISTORY_POINTS:]
     change = round(new_price - base, 2)
     pct = round(change / base * 100, 2) if base else 0
     return {
@@ -277,10 +414,6 @@ def demo_quote(symbol: str) -> dict[str, Any]:
         "fifty_two_week_low": None,
         "last_updated": now_ist().isoformat(),
         "market": market_status(),
-        "history": [
-            {"datetime": now_ist().isoformat(), "price": price}
-            for price in state["history"]
-        ],
         "is_demo": True,
     }
 
@@ -354,14 +487,15 @@ def normalize_quote(payload: dict[str, Any], requested_symbol: str | None = None
 
 
 def real_quote(symbol: str, use_cache: bool = True) -> dict[str, Any]:
-    if CLIENT is None:
+    client = live_client()
+    if client is None:
         return demo_quote(symbol)
     cache_key = f"quote:{symbol}"
     if use_cache:
         cached = cache_get(cache_key, QUOTE_CACHE_TTL)
         if cached is not None:
             return cached
-    payload = CLIENT.get("quote", {"symbol": symbol})
+    payload = client.get("quote", {"symbol": symbol})
     quote = normalize_quote(payload, symbol)
     if quote["price"] is None:
         raise MarketDataError("No matching stock found.", 404)
@@ -449,8 +583,9 @@ def search_assets(query: str) -> list[dict[str, Any]]:
     # 1) Always check the local 100+ stock catalog first. This costs zero
     #    API credits and covers the vast majority of searches for this app
     #    (Requirements 3 and 17).
+    client = live_client()
     local_matches = [_to_search_result(item) for item in local_catalog_search(query)[:20]]
-    if local_matches or CLIENT is None:
+    if local_matches or client is None:
         return local_matches
 
     # Nothing in the local catalog matched - only now do we spend a Twelve
@@ -462,7 +597,7 @@ def search_assets(query: str) -> list[dict[str, Any]]:
     if cached is not None:
         return cached
 
-    payload = CLIENT.get("symbol_search", {"symbol": lookup_term})
+    payload = client.get("symbol_search", {"symbol": lookup_term})
     results = (
         payload
         if isinstance(payload, list)
@@ -565,8 +700,10 @@ def quote_from_local_history(symbol: str) -> dict[str, Any] | None:
 def local_history_slice(symbol: str, range_name: str) -> list[dict[str, Any]]:
     """Approximate a chart range from locally saved daily OHLCV data.
 
-    The downloaded data is daily, so 1D falls back to the single latest
-    saved day rather than true intraday points.
+    The downloaded data is daily. For 1D there are no true intraday bars
+    offline, so a session-shaped line is built from that day's real saved
+    OHLC values only (open/high/low/close and their midpoints) — every
+    point is derived from genuine downloaded data, never invented.
     """
     base = symbol.split(":")[0]
     payload = load_history_file(base)
@@ -576,7 +713,33 @@ def local_history_slice(symbol: str, range_name: str) -> list[dict[str, Any]]:
         (p for p in payload["data"] if p.get("datetime") and as_float(p.get("close")) is not None),
         key=lambda p: p["datetime"],
     )
-    take = {"1D": 1, "1W": 7, "1M": 22, "3M": 66, "1Y": 252}.get(range_name.upper(), 22)
+    if not points:
+        return []
+    range_key = range_name.upper()
+    # For 1D there are no intraday bars offline. Instead of a single dot,
+    # synthesize an *intraday shape* purely from the last saved real daily
+    # OHLC row (open/high/low/close are all genuine downloaded values —
+    # nothing is invented): open -> mid-morning high -> midday low -> close.
+    if range_key == "1D":
+        last = points[-1]
+        day = str(last["datetime"])[:10]
+        o = as_float(last.get("open"))
+        h = as_float(last.get("high"))
+        l = as_float(last.get("low"))
+        c = as_float(last.get("close"))
+        if None in (o, h, l, c):
+            return [{"datetime": last["datetime"], "price": c}]
+        mid_hi = round((max(o, c) + h) / 2, 4)
+        mid_lo = round((min(o, c) + l) / 2, 4)
+        return [
+            {"datetime": f"{day} 09:15:00", "price": o},
+            {"datetime": f"{day} 10:30:00", "price": mid_hi},
+            {"datetime": f"{day} 12:00:00", "price": max(o, c)},
+            {"datetime": f"{day} 13:30:00", "price": mid_lo},
+            {"datetime": f"{day} 15:00:00", "price": min(o, c)},
+            {"datetime": f"{day} 15:30:00", "price": c},
+        ]
+    take = {"1W": 7, "1M": 22, "3M": 66, "1Y": 252}.get(range_key, 22)
     selected = points[-take:] if take else points
     return [{"datetime": p["datetime"], "price": as_float(p.get("close"))} for p in selected]
 
@@ -585,7 +748,7 @@ def get_quote_with_fallback(symbol: str) -> dict[str, Any]:
     """Try a live Twelve Data quote; on failure, fall back to locally
     downloaded history. Always tags the result with its real source so the
     frontend never presents cached data as live (Requirements 11 and 18)."""
-    if CLIENT is None:
+    if live_client() is None:
         cached = quote_from_local_history(symbol)
         if cached is not None:
             cached["data_source"] = "CACHED"
@@ -597,6 +760,14 @@ def get_quote_with_fallback(symbol: str) -> dict[str, Any]:
             quote["fallback_reason"] = None
             return quote
         except MarketDataError:
+            # No downloaded history and not a seeded demo asset. In an
+            # explicitly DEMO session the frontend may request ?force=demo
+            # to preview any catalog stock with clearly-labelled seeded
+            # values; otherwise report honestly as UNAVAILABLE.
+            if _force_mode() == "demo":
+                forced = forced_demo_quote(symbol)
+                if forced is not None:
+                    return forced
             return unavailable_quote(symbol)
 
     try:
@@ -616,42 +787,60 @@ def get_quote_with_fallback(symbol: str) -> dict[str, Any]:
 
 
 def get_history_with_fallback(symbol: str, range_name: str) -> dict[str, Any]:
-    """Try live Twelve Data history; on failure, fall back to a locally
-    downloaded slice. Returns {"data", "source", "message"}."""
-    if CLIENT is None:
-        local_data = local_history_slice(symbol, range_name)
-        if local_data:
-            note = (
-                "Showing the latest locally saved daily price (intraday history "
-                "is not available offline)."
-                if range_name.upper() == "1D"
-                else "Showing locally saved daily history because live data is not configured."
-            )
-            return {"data": local_data, "source": "CACHED", "message": note}
+    """Priority chain (Requirement 5): live Twelve Data -> locally
+    downloaded history -> seeded demo history -> UNAVAILABLE.
+    Returns {"data", "source", "message"}; the source tag is what the
+    frontend displays, so cached/demo data is never shown as live."""
+    range_key = range_name.upper()
+
+    def local_result(note_suffix: str | None = None) -> dict[str, Any] | None:
+        local_data = local_history_slice(symbol, range_key)
+        if not local_data:
+            return None
+        if range_key == "1D":
+            note = ("Intraday bars are not available offline - showing a session line built from the last saved day's real OHLC values."
+                    + (note_suffix or ""))
+        else:
+            note = "Showing locally saved daily history." + (note_suffix or "")
+        return {"data": local_data, "source": "CACHED", "message": note}
+
+    def demo_result(suffix: str) -> dict[str, Any] | None:
         try:
-            return {"data": demo_quote(symbol)["history"], "source": "DEMO", "message": None}
+            return {"data": demo_history_for(symbol, range_key), "source": "DEMO", "message": suffix}
         except MarketDataError:
-            return {
-                "data": [],
-                "source": "UNAVAILABLE",
-                "message": "Historical chart data is currently unavailable.",
-            }
+            return None
+
+    if live_client() is None:
+        fallback = local_result(" Live data is not configured.")
+        if fallback:
+            return fallback
+        result = demo_result("Seeded demo history - no live data source is configured.")
+        if result:
+            return result
+        if _force_mode() == "demo":
+            result = demo_result_for_base(symbol, "Forced demo preview of seeded history.")
+            if result:
+                return result
+        return {
+            "data": [],
+            "source": "UNAVAILABLE",
+            "message": "Historical chart data is currently unavailable.",
+        }
 
     try:
-        data = history_for(symbol, range_name)
+        data = history_for(symbol, range_key)
         if not data:
             raise MarketDataError("Historical data unavailable for this range.")
         return {"data": data, "source": "LIVE", "message": None}
     except MarketDataError:
-        local_data = local_history_slice(symbol, range_name)
-        if local_data:
-            note = (
-                "Showing the latest locally saved daily price (intraday history "
-                "is not available offline)."
-                if range_name.upper() == "1D"
-                else None
-            )
-            return {"data": local_data, "source": "CACHED", "message": note}
+        fallback = local_result(" Live Twelve Data is unavailable or rate-limited.")
+        if fallback:
+            return fallback
+        # Seeded demo history exists only for the watchlist seed assets;
+        # anything else honestly reports UNAVAILABLE rather than faking.
+        result = demo_result("Live and local data unavailable - showing seeded demo history.")
+        if result:
+            return result
         return {
             "data": [],
             "source": "UNAVAILABLE",
@@ -660,8 +849,9 @@ def get_history_with_fallback(symbol: str, range_name: str) -> dict[str, Any]:
 
 
 def history_for(symbol: str, range_name: str = "1M") -> list[dict[str, Any]]:
-    if CLIENT is None:
-        return demo_quote(symbol)["history"]
+    client = live_client()
+    if client is None:
+        return demo_history(symbol, range_name)
 
     range_key = range_name.upper()
     cache_key = f"history:{symbol}:{range_key}"
@@ -677,7 +867,7 @@ def history_for(symbol: str, range_name: str = "1M") -> list[dict[str, Any]]:
         "1Y": ("1day", 260),
     }
     interval, outputsize = settings.get(range_key, settings["1M"])
-    payload = CLIENT.get(
+    payload = client.get(
         "time_series",
         {"symbol": symbol, "interval": interval, "outputsize": outputsize, "order": "asc"},
     )
@@ -698,7 +888,7 @@ def compare_exchanges(symbol: str, selected_quote: dict[str, Any]) -> dict[str, 
     base = symbol.split(":")[0]
     requested_exchange = symbol.split(":")[1].upper() if ":" in symbol else None
 
-    if CLIENT is None:
+    if live_client() is None:
         if selected_quote.get("data_source") == "UNAVAILABLE" or selected_quote.get("price") is None:
             return _comparison(None, None)
         price = selected_quote["price"]

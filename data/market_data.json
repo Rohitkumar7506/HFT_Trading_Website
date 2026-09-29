@@ -1,15 +1,91 @@
 {
   "threshold": 0.75,
-  "transaction_cost": 0.30,
-  "default_watchlist": ["RELIANCE:NSE", "TCS:NSE", "INFY:NSE", "HDFCBANK:NSE", "ICICIBANK:NSE"],
+  "transaction_cost": 0.3,
+  "default_watchlist": [
+    "RELIANCE:NSE",
+    "TCS:NSE",
+    "INFY:NSE",
+    "HDFCBANK:NSE",
+    "ICICIBANK:NSE"
+  ],
   "assets": [
-    { "symbol": "RELIANCE:NSE", "name": "Reliance Industries", "exchange": "NSE", "base_price": 1450.00 },
-    { "symbol": "TCS:NSE", "name": "Tata Consultancy Services", "exchange": "NSE", "base_price": 3450.00 },
-    { "symbol": "INFY:NSE", "name": "Infosys", "exchange": "NSE", "base_price": 1550.00 },
-    { "symbol": "HDFCBANK:NSE", "name": "HDFC Bank", "exchange": "NSE", "base_price": 1980.00 },
-    { "symbol": "ICICIBANK:NSE", "name": "ICICI Bank", "exchange": "NSE", "base_price": 1420.00 },
-    { "symbol": "SBIN:NSE", "name": "State Bank of India", "exchange": "NSE", "base_price": 820.00 },
-    { "symbol": "ITC:NSE", "name": "ITC", "exchange": "NSE", "base_price": 430.00 },
-    { "symbol": "BHARTIARTL:NSE", "name": "Bharti Airtel", "exchange": "NSE", "base_price": 1850.00 }
+    {
+      "symbol": "RELIANCE:NSE",
+      "name": "Reliance Industries",
+      "exchange": "NSE",
+      "base_price": 1450.0
+    },
+    {
+      "symbol": "TCS:NSE",
+      "name": "Tata Consultancy Services",
+      "exchange": "NSE",
+      "base_price": 3450.0
+    },
+    {
+      "symbol": "INFY:NSE",
+      "name": "Infosys",
+      "exchange": "NSE",
+      "base_price": 1550.0
+    },
+    {
+      "symbol": "HDFCBANK:NSE",
+      "name": "HDFC Bank",
+      "exchange": "NSE",
+      "base_price": 1980.0
+    },
+    {
+      "symbol": "ICICIBANK:NSE",
+      "name": "ICICI Bank",
+      "exchange": "NSE",
+      "base_price": 1420.0
+    },
+    {
+      "symbol": "SBIN:NSE",
+      "name": "State Bank of India",
+      "exchange": "NSE",
+      "base_price": 820.0
+    },
+    {
+      "symbol": "ITC:NSE",
+      "name": "ITC",
+      "exchange": "NSE",
+      "base_price": 430.0
+    },
+    {
+      "symbol": "BHARTIARTL:NSE",
+      "name": "Bharti Airtel",
+      "exchange": "NSE",
+      "base_price": 1850.0
+    },
+    {
+      "symbol": "WIPRO:NSE",
+      "name": "Wipro",
+      "exchange": "NSE",
+      "base_price": 310.0
+    },
+    {
+      "symbol": "HINDUNILVR:NSE",
+      "name": "Hindustan Unilever",
+      "exchange": "NSE",
+      "base_price": 2450.0
+    },
+    {
+      "symbol": "BAJFINANCE:NSE",
+      "name": "Bajaj Finance",
+      "exchange": "NSE",
+      "base_price": 7200.0
+    },
+    {
+      "symbol": "MARUTI:NSE",
+      "name": "Maruti Suzuki",
+      "exchange": "NSE",
+      "base_price": 12800.0
+    },
+    {
+      "symbol": "SUNPHARMA:NSE",
+      "name": "Sun Pharmaceutical Industries",
+      "exchange": "NSE",
+      "base_price": 1600.0
+    }
   ]
 }
